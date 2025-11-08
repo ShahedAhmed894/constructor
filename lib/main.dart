@@ -1,9 +1,32 @@
 import 'package:ai_class_1/Ai_class1.dart';
+import 'package:ai_class_1/Curve%20Navigation/curve%20class.dart';
+import 'package:ai_class_1/Firebase/Send_data.dart';
 import 'package:ai_class_1/chatbot.dart';
 import 'package:ai_class_1/constructor.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
+// void main()  {
+//   WidgetsFlutterBinding.ensureInitialized();
+//    Firebase.initializeApp();
+//   runApp(const MyApp());
+// }
+// void main() async {
+//   WidgetsFlutterBinding.ensureInitialized();
+//   await dotenv.load(fileName: ".env");
+//   Firebase.initializeApp();
+//   runApp(MyApp());
+// }
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  try {
+    await dotenv.load(fileName: "assets/.env");
+  } catch (e) {
+    print("Error loading .env file: $e");
+  }
+
   runApp(const MyApp());
 }
 
@@ -33,7 +56,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: constuctor_class(),
+      home: ChatScreen5(),
       debugShowCheckedModeBanner: false,
     );
   }
